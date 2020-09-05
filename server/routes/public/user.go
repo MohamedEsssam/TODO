@@ -1,4 +1,4 @@
-package routes
+package publicRoutes
 
 import (
 	"../../controllers/users"

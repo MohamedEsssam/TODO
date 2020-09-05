@@ -27,7 +27,7 @@ func Init() *sql.DB {
 	return dbInstance
 }
 
-func CreateModels(db *sql.DB) {
-	models.UserModel(db)
-	models.TodoModel(db)
+func CreateModels() {
+	models.UserModel(dbInstance)
+	models.TodoModel(dbInstance)
 }

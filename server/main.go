@@ -1,6 +1,7 @@
 package main
 
 import (
+	"./routes/private"
 	"./routes/public"
 	"./utils"
 	"fmt"
@@ -11,9 +12,12 @@ import (
 
 func main() {
 	utils.ConnectDB()
+	// utils.CreateModels()
+
 	router := mux.NewRouter()
 
-	routes.HandleUserReq(router)
+	privateRoutes.HandleTodoReq(router)
+	publicRoutes.HandleUserReq(router)
 
 	fmt.Println("Starting server on the port 8000...")
 	log.Fatal(http.ListenAndServe(":8000", router))

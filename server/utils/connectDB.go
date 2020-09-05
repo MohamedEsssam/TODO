@@ -7,9 +7,12 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 )
 
+var dbInstance *sql.DB
+
 func ConnectDB() *sql.DB {
 	db, err := sql.Open("mysql", "root:555FFaa@eerewqMohamed@111@/todo?multiStatements=true")
 
+	dbInstance = db
 	// if there is an error opening the connection, handle it
 	if err != nil {
 		panic(err.Error())
@@ -18,6 +21,10 @@ func ConnectDB() *sql.DB {
 	}
 
 	return db
+}
+
+func Init() *sql.DB {
+	return dbInstance
 }
 
 func CreateModels(db *sql.DB) {

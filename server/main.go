@@ -1,32 +1,20 @@
 package main
 
 import (
-	"fmt"
-	// "log"
-	// "net/http"
-	// "./routes"
-	"./services"
+	"./routes/public"
 	"./utils"
+	"fmt"
+	"github.com/gorilla/mux"
+	"log"
+	"net/http"
 )
 
 func main() {
-	db := utils.ConnectDB()
-	// utils.CreateModels(db)
+	utils.ConnectDB()
+	router := mux.NewRouter()
 
-	// result := services.Login(db, "email1@yahoo.com", "1111")
-	// if result == "" {
-	// 	fmt.Println("sasa")
-	// } else {
-	// 	fmt.Println(result)
-	// }
+	routes.HandleUserReq(router)
 
-	result := services.Register(db, "Mohamed", "email1@gmail.com", "1111")
-	if result == "" {
-		fmt.Println("sasa")
-	} else {
-		fmt.Println(result)
-	}
-
-	// fmt.Println("Starting server on the port 8000...")
-	// log.Fatal(http.ListenAndServe(":8000", Router))
+	fmt.Println("Starting server on the port 8000...")
+	log.Fatal(http.ListenAndServe(":8000", router))
 }

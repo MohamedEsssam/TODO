@@ -13,13 +13,8 @@ type User struct {
 	Email  string `json:"email"`
 }
 
-// Users is..
-var Users struct {
-	Data []User `json:"data"`
-}
-
 // Login is..
-func Login(db *sql.DB, email string, password string) string {
+func Login(db *sql.DB, email string, password string) []byte {
 	const query = "SELECT userId, name, email FROM user WHERE email = ? AND password = ?"
 	row, err := db.Query(query, email, password)
 
@@ -37,24 +32,23 @@ func Login(db *sql.DB, email string, password string) string {
 		if err := row.Scan(&user.UserID, &user.Name, &user.Email); err != nil {
 			panic(err.Error())
 		}
-		Users.Data = append(Users.Data, user)
 	}
 
 	if !hasResults {
-		return ""
+		return nil
 	}
 
 	res, _ := json.Marshal(user)
 
-	return string(res)
+	return res
 }
 
 // Register is..
-func Register(db *sql.DB, name string, email string, password string) string {
+func Register(db *sql.DB, name string, email string, password string) []byte {
 	var user User
 	json.Unmarshal([]byte(getUserByEmail(db, email)), &user)
 	if (User{} != user) {
-		return ""
+		return nil
 	}
 
 	const query = "INSERT INTO user (userId, name, email, password)VALUES(UUID(), ?, ?, ?)"
@@ -72,7 +66,7 @@ func Register(db *sql.DB, name string, email string, password string) string {
 }
 
 // getUserByEmail is..
-func getUserByEmail(db *sql.DB, email string) string {
+func getUserByEmail(db *sql.DB, email string) []byte {
 	const query = "SELECT userId, name, email FROM user WHERE email = ?"
 	row, err := db.Query(query, email)
 
@@ -90,14 +84,13 @@ func getUserByEmail(db *sql.DB, email string) string {
 		if err := row.Scan(&user.UserID, &user.Name, &user.Email); err != nil {
 			panic(err.Error())
 		}
-		Users.Data = append(Users.Data, user)
 	}
 
 	if !hasResults {
-		return ""
+		return nil
 	}
 
 	res, _ := json.Marshal(user)
 
-	return string(res)
+	return res
 }

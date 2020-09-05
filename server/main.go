@@ -1,8 +1,7 @@
 package main
 
 import (
-	"./routes/private"
-	"./routes/public"
+	"./routes"
 	"./utils"
 	"fmt"
 	"github.com/gorilla/mux"
@@ -15,9 +14,7 @@ func main() {
 	// utils.CreateModels()
 
 	router := mux.NewRouter()
-
-	privateRoutes.HandleTodoReq(router)
-	publicRoutes.HandleUserReq(router)
+	routes.Routes(router)
 
 	fmt.Println("Starting server on the port 8000...")
 	log.Fatal(http.ListenAndServe(":8000", router))

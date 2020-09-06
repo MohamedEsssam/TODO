@@ -110,10 +110,59 @@ func Create(db *sql.DB, text string, userId string) []byte {
 	return GetTodo(db, todo.TodoID, userId)
 }
 
-func Update(db *sql.DB, todoId string, userId string) {
+func UpdateText(db *sql.DB, todoId string, userId string, text string) []byte {
+	todo := GetTodo(db, todoId, userId)
+	if todo == nil {
+		return nil
+	}
 
+	const query = "UPDATE todoList SET text = ? WHERE todoId = ? AND userId = ?"
+	update, err := db.Query(query, text, todoId, userId)
+
+	if err != nil {
+		panic(err.Error())
+	} else {
+		fmt.Println(query)
+		defer update.Close()
+	}
+
+	return GetTodo(db, todoId, userId)
 }
 
-func Delete(db *sql.DB, todoId string, userId string) {
+func UpdateStatus(db *sql.DB, todoId string, userId string, status string) []byte {
+	todo := GetTodo(db, todoId, userId)
+	if todo == nil {
+		return nil
+	}
 
+	const query = "UPDATE todoList SET status = ? WHERE todoId = ? AND userId = ?"
+	update, err := db.Query(query, status, todoId, userId)
+
+	if err != nil {
+		panic(err.Error())
+	} else {
+		fmt.Println(query)
+		defer update.Close()
+	}
+
+	return GetTodo(db, todoId, userId)
+}
+
+func Delete(db *sql.DB, todoId string, userId string) []byte {
+	todo := GetTodo(db, todoId, userId)
+	if todo == nil {
+		return nil
+	}
+
+	const query = "DELETE FROM todoList WHERE todoId = ? AND userId = ?"
+	delete, err := db.Query(query, todoId, userId)
+
+	if err != nil {
+		panic(err.Error())
+	} else {
+		fmt.Println(query)
+		defer delete.Close()
+	}
+
+	return todo
 }

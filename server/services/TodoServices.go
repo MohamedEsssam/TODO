@@ -81,8 +81,33 @@ func GetTodo(db *sql.DB, todoId string, userId string) []byte {
 
 }
 
-func Create(db *sql.DB, text string, userId string) {
+func Create(db *sql.DB, text string, userId string) []byte {
+	var query = "SELECT UUID()"
 
+	uid, err := db.Query(query)
+	if err != nil {
+		panic(err.Error())
+	} else {
+		fmt.Println(query)
+		defer uid.Close()
+	}
+	todo := Todo{}
+	for uid.Next() {
+		if err := uid.Scan(&todo.TodoID); err != nil {
+			panic(err.Error())
+		}
+	}
+
+	query = "INSERT INTO todoList (todoId, text, createdAt, userId) VALUES (?, ?, NOW(), ?)"
+	insert, err := db.Query(query, todo.TodoID, text, userId)
+	if err != nil {
+		panic(err.Error())
+	} else {
+		fmt.Println(query)
+		defer insert.Close()
+	}
+
+	return GetTodo(db, todo.TodoID, userId)
 }
 
 func Update(db *sql.DB, todoId string, userId string) {

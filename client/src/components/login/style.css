@@ -1,0 +1,74 @@
+.container {
+  width: 50%;
+  height: 25rem;
+  position: relative;
+  margin-left: 20rem;
+  margin-top: 6rem;
+  box-shadow: 1px 2px 2px #073b4c;
+  border-radius: 2em;
+  border: 1px solid #073b4c;
+  background-color: #ffd166;
+}
+
+#form {
+  position: relative;
+  left: 17rem;
+}
+
+#formInput {
+  position: relative;
+  right: 4rem;
+  width: 15rem;
+}
+
+#label {
+  position: relative;
+  right: 10rem;
+  top: 2.4rem;
+}
+
+#login {
+  position: relative;
+  top: 1rem;
+}
+
+#errorContainer {
+  position: relative;
+  width: 50%;
+  height: 5rem;
+  top: 2rem;
+  right: 6.5rem;
+  box-shadow: 1px 2px 2px white;
+  border: 1px solid white;
+}
+#error {
+  position: relative;
+  animation: shakeit 3s infinite;
+}
+
+@keyframes shakeit {
+  0% {
+    left: 0;
+  }
+  12.5% {
+    left: -50px;
+  }
+  25% {
+    left: 50px;
+  }
+  37.5% {
+    left: -25px;
+  }
+  50% {
+    left: 25px;
+  }
+  62.5% {
+    left: -10px;
+  }
+  75% {
+    left: 10px;
+  }
+  100% {
+    left: 0;
+  }
+}

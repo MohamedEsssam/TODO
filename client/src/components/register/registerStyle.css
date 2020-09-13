@@ -1,0 +1,11 @@
+.registerContainer {
+  width: 50%;
+  height: 30rem;
+  position: relative;
+  margin-left: 20rem;
+  margin-top: 6rem;
+  box-shadow: 1px 2px 2px #073b4c;
+  border-radius: 2em;
+  border: 1px solid #073b4c;
+  background-color: #ffd166;
+}

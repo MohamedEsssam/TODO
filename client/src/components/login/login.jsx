@@ -20,7 +20,7 @@ const Login = React.memo(() => {
         });
 
         history.push({
-          pathname: "/",
+          pathname: `/${user.userId}`,
           user: user,
         });
       }

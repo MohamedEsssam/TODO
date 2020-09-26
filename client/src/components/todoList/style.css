@@ -1,0 +1,16 @@
+.TodoContainer {
+  width: 50%;
+  height: 25rem;
+  position: relative;
+  margin-left: 20rem;
+  margin-top: 6rem;
+  box-shadow: 1px 2px 2px #073b4c;
+}
+
+#onProgress {
+  width: 100%;
+}
+
+#onProgressList {
+  width: 100%;
+}

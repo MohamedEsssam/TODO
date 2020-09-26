@@ -25,7 +25,6 @@ func Update(w http.ResponseWriter, r *http.Request) {
 
 	var result []byte
 	if text != "" {
-
 		result = services.UpdateText(db, todoId, userId, text)
 	}
 	if status != "" {

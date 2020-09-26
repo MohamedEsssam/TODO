@@ -7,8 +7,6 @@ import (
 )
 
 func Routes(router *mux.Router) {
-
-	privateRoutes.HandleTodoReq(router)
 	publicRoutes.HandleUserReq(router)
-
+	privateRoutes.HandleTodoReq(router)
 }

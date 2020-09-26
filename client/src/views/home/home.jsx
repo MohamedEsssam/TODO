@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useHistory, Link } from "react-router-dom";
 import { logout, currentUser } from "../../services/userServices";
 import Login from "../../components/login/login";
+import TodoList from "../../components/todoList/todoList";
 
 const Home = () => {
   const history = useHistory();
@@ -32,14 +33,17 @@ const Home = () => {
         </>
       )}
       {user && (
-        <Link
-          to={{
-            pathname: "/",
-          }}
-          onClick={logout}
-        >
-          logout
-        </Link>
+        <div>
+          <Link
+            to={{
+              pathname: "/",
+            }}
+            onClick={logout}
+          >
+            logout
+          </Link>
+          <TodoList />
+        </div>
       )}
     </>
   );

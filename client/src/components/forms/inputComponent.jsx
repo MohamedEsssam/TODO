@@ -6,7 +6,6 @@ const CustomInput = ({ initialValues, name, ...otherProps }) => {
 
   return (
     <>
-      <label id="label">{name} :</label>
       <Field
         defaultValue={initialValues}
         id="input"
@@ -16,7 +15,6 @@ const CustomInput = ({ initialValues, name, ...otherProps }) => {
         onChange={handleChange(name)}
         {...otherProps}
       />
-      {touched[name] && <ErrorMessage id="error" name={name} component="div" />}
     </>
   );
 };

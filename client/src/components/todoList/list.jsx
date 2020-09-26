@@ -64,7 +64,6 @@ const List = React.memo(
                     Redo
                   </Button>
                 )}
-
                 <Button variant="dark">Edit</Button>
               </Card.Body>
             </Card>

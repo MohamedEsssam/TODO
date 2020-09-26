@@ -3,6 +3,7 @@ import { getTodos, remove, update } from "../../services/todoServices";
 import { currentUser } from "../../services/userServices";
 import List from "./list";
 import "./style.css";
+import NewTodo from "../forms/customInput";
 
 const TodoList = React.memo(() => {
   const user = currentUser();
@@ -60,6 +61,7 @@ const TodoList = React.memo(() => {
   return (
     <>
       <div class="TodoContainer">
+        <NewTodo initialValues={{ text: "" }} loadTodos={loadTodos} />
         <div>
           <List
             label="On Progress Tasks"

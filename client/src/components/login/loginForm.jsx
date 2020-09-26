@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import { Form, useFormikContext } from "formik";
-import CustomInput from "../forms/inputComponent";
+import FormInput from "../form/formInput";
 
 const LoginForm = () => {
   const { handleChange, setFieldTouched, touched, errors } = useFormikContext();
@@ -10,7 +10,7 @@ const LoginForm = () => {
       <h1>Login</h1>
       <Form>
         <div>
-          <CustomInput
+          <FormInput
             type="email"
             name="email"
             placeholder="Email"
@@ -18,7 +18,7 @@ const LoginForm = () => {
           />
         </div>
         <div>
-          <CustomInput
+          <FormInput
             type="password"
             name="password"
             placeholder="Password"

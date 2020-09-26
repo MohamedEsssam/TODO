@@ -30,6 +30,7 @@ const List = React.memo(
                 <Card.Text>{todo.text}</Card.Text>
                 <Button
                   variant="danger"
+                  className="mr-2"
                   onClick={() => deleteTodo(todo.todoId)}
                 >
                   Delete
@@ -37,21 +38,24 @@ const List = React.memo(
                 {type === "inProgress" ? (
                   <Button
                     variant="primary"
+                    className="mr-2"
                     onClick={() => updateTodoStatus(todo.todoId, "paused")}
                   >
-                    Paused
+                    ||
                   </Button>
                 ) : (
                   <Button
                     variant="primary"
+                    className="mr-2"
                     onClick={() => updateTodoStatus(todo.todoId, "inProgress")}
                   >
-                    Redo
+                    Undo
                   </Button>
                 )}
                 {type !== "completed" ? (
                   <Button
                     variant="primary"
+                    className="mr-2"
                     onClick={() => updateTodoStatus(todo.todoId, "completed")}
                   >
                     Finished
@@ -59,9 +63,10 @@ const List = React.memo(
                 ) : (
                   <Button
                     variant="primary"
+                    className="mr-2"
                     onClick={() => updateTodoStatus(todo.todoId, "inProgress")}
                   >
-                    Redo
+                    Undo
                   </Button>
                 )}
                 <Button variant="dark">Edit</Button>

@@ -1,23 +1,24 @@
 import React from "react";
-import { Field, useFormikContext } from "formik";
-import "./style.css";
+import { Field, ErrorMessage, useFormikContext } from "formik";
 
-const CustomInput = ({ initialValues, name, ...otherProps }) => {
+const FormInput = ({ initialValues, name, ...otherProps }) => {
   const { handleChange, setFieldTouched, touched, errors } = useFormikContext();
 
   return (
     <>
+      <label id="label">{name} :</label>
       <Field
         defaultValue={initialValues}
-        id="todoInput"
+        id="input"
         className="form-control"
         name={name}
         onBlur={() => setFieldTouched(name)}
         onChange={handleChange(name)}
         {...otherProps}
       />
+      {touched[name] && <ErrorMessage id="error" name={name} component="div" />}
     </>
   );
 };
 
-export default CustomInput;
+export default FormInput;

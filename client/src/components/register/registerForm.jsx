@@ -1,7 +1,7 @@
 import React from "react";
 import { Form } from "formik";
 import { Button } from "react-bootstrap";
-import CustomInput from "../forms/inputComponent";
+import FormInput from "../form/formInput";
 import "./registerStyle.css";
 
 const RegisterForm = () => {
@@ -12,7 +12,7 @@ const RegisterForm = () => {
           <h1>Register</h1>
           <Form>
             <div>
-              <CustomInput
+              <FormInput
                 type="name"
                 name="name"
                 placeholder="Name"
@@ -20,7 +20,7 @@ const RegisterForm = () => {
               />
             </div>
             <div>
-              <CustomInput
+              <FormInput
                 type="email"
                 name="email"
                 placeholder="Email"
@@ -28,7 +28,7 @@ const RegisterForm = () => {
               />
             </div>
             <div>
-              <CustomInput
+              <FormInput
                 type="password"
                 name="password"
                 placeholder="Password"

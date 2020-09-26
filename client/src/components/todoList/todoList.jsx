@@ -60,6 +60,11 @@ const TodoList = React.memo(() => {
 
   return (
     <>
+      <img
+        src={require("../../asset/animation.gif")}
+        alt="loading..."
+        style={{ width: "200px", position: "relative", left: "450px" }}
+      />
       <div class="TodoContainer">
         <NewTodo initialValues={{ text: "" }} loadTodos={loadTodos} />
         <div>

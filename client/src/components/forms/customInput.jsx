@@ -32,8 +32,8 @@ const NewTodo = React.memo(({ initialValues, loadTodos }) => {
                 name="text"
                 placeholder="Enter New Todo"
               />
-              <Button type="submit" variant="primary">
-                NewTodo
+              <Button type="submit" variant="primary" id="addNewTodo">
+                +
               </Button>
             </Form>
           </>

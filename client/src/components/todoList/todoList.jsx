@@ -4,6 +4,7 @@ import { currentUser } from "../../services/userServices";
 import List from "./list";
 import "./style.css";
 import NewTodo from "../forms/customInput";
+import Bie from "../pie/pie";
 
 const TodoList = React.memo(() => {
   const user = currentUser();
@@ -61,6 +62,17 @@ const TodoList = React.memo(() => {
 
   return (
     <>
+      <Bie
+        dataSet={{
+          data: [
+            inProgressTodos.length,
+            completedTodos.length,
+            pausedTodos.length,
+          ],
+          backgroundColor: ["#FFCE56", "#36A2EB", "#FF6384"],
+          hoverBackgroundColor: ["#FFCE56", "#36A2EB", "#FF6384"],
+        }}
+      />
       <img
         src={require("../../asset/animation.gif")}
         alt="loading..."

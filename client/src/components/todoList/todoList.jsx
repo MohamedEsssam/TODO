@@ -49,6 +49,7 @@ const TodoList = React.memo(() => {
 
     if (todo) loadTodos();
   };
+
   const updateTodoStatus = async (todoId, status) => {
     let data = {};
     data.todoId = todoId;
@@ -67,33 +68,27 @@ const TodoList = React.memo(() => {
       />
       <div class="TodoContainer">
         <NewTodo initialValues={{ text: "" }} loadTodos={loadTodos} />
-        <div>
-          <List
-            label="On Progress Tasks"
-            todos={inProgressTodos}
-            type="inProgress"
-            deleteTodo={deleteTodo}
-            updateTodoStatus={updateTodoStatus}
-          />
-        </div>
-        <div>
-          <List
-            label="Completed Tasks"
-            todos={completedTodos}
-            type="completed"
-            deleteTodo={deleteTodo}
-            updateTodoStatus={updateTodoStatus}
-          />
-        </div>
-        <div>
-          <List
-            label="Paused Tasks"
-            todos={pausedTodos}
-            type="paused"
-            deleteTodo={deleteTodo}
-            updateTodoStatus={updateTodoStatus}
-          />
-        </div>
+        <List
+          label="In Progress Tasks"
+          todos={inProgressTodos}
+          type="inProgress"
+          deleteTodo={deleteTodo}
+          updateTodoStatus={updateTodoStatus}
+        />
+        <List
+          label="Completed Tasks"
+          todos={completedTodos}
+          type="completed"
+          deleteTodo={deleteTodo}
+          updateTodoStatus={updateTodoStatus}
+        />
+        <List
+          label="Paused Tasks"
+          todos={pausedTodos}
+          type="paused"
+          deleteTodo={deleteTodo}
+          updateTodoStatus={updateTodoStatus}
+        />
       </div>
     </>
   );

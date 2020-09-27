@@ -6,7 +6,7 @@ const data = {
   datasets: [],
 };
 
-const Bie = React.memo(({ dataSet }) => {
+const DoughnutComponent = React.memo(({ dataSet }) => {
   console.log(dataSet);
   data.datasets[0] = dataSet;
   return (
@@ -25,4 +25,4 @@ const Bie = React.memo(({ dataSet }) => {
   );
 });
 
-export default Bie;
+export default DoughnutComponent;

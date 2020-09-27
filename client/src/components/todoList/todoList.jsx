@@ -4,7 +4,7 @@ import { currentUser } from "../../services/userServices";
 import List from "./list";
 import "./style.css";
 import NewTodo from "../forms/customInput";
-import Bie from "../pie/pie";
+import DoughnutComponent from "../doughnut/doughnut";
 
 const TodoList = React.memo(() => {
   const user = currentUser();
@@ -62,7 +62,7 @@ const TodoList = React.memo(() => {
 
   return (
     <>
-      <Bie
+      <DoughnutComponent
         dataSet={{
           data: [
             inProgressTodos.length,
